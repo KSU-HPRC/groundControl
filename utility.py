@@ -1,4 +1,5 @@
 import sys
+import struct
 
 def getOpts():
     opts={}
@@ -18,3 +19,9 @@ def getOpts():
         args=args[1:]
 
     return opts
+
+def floatToHex(float):
+    return hex(struct.unpack('<I', struct.pack('<f', float))[0])
+
+def hexToFloat(hex):
+    return struct.unpack('!f',bytes.fromhex(hex[2:]))[0]
