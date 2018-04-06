@@ -1,4 +1,5 @@
 from digi.xbee.devices import XBeeDevice
-from utility import getOpts
+from utility import getOpts, floatToHex,hexToFloat
 
-print(getOpts())
+h='0x0123ABCD'
+print(hexToFloat(h))
