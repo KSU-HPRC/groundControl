@@ -1,4 +1,5 @@
 import sys
+from numpy import float32
 import struct
 
 def getOpts():
@@ -24,4 +25,4 @@ def floatToHex(float):
     return hex(struct.unpack('<I', struct.pack('<f', float))[0])
 
 def hexToFloat(hex):
-    return struct.unpack('!f',bytes.fromhex(hex[2:]))[0]
+    return float32(struct.unpack('<f',bytes.fromhex(hex))[0])
