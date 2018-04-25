@@ -11,11 +11,14 @@ class Vector:
     def __add__(self, other):
         return Vector((self.x+other.x,self.y+other.y,self.z+other.z))
 
+    def __sub__(self, other):
+        return Vector((self.x-other.x,self.y-other.y,self.z-other.z))
+
     def __mul__(self, other):
         return Vector((self.x*other,self.y*other,self.z*other))
 
-    def __sub__(self, other):
-        return Vector((self.x-other.x,self.y-other.y,self.z-other.z))
+    def __truediv__(self, other):
+        return Vector((self.x/other,self.y/other,self.z/other))
 
     def dot(self,other):
         return self.x*other.x+self.y*other.y+self.z*other.z
@@ -40,3 +43,9 @@ class Vector:
 def normalize(vec):
     mag=abs(vec)
     return Vector((vec.x/mag,vec.y/mag,vec.z/mag))
+
+def getPerpComponent(ref,target):
+    refHat=normalize(ref)
+
+    return target-(refHat*refHat.dot(target))
+

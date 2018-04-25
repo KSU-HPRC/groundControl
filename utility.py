@@ -24,4 +24,8 @@ def floatToHex(float):
     return hex(struct.unpack('<I', struct.pack('<f', float))[0])
 
 def hexToFloat(hex):
-    return struct.unpack('!f',bytes.fromhex(hex[2:]))[0]
+    #print(len(hex))
+    return struct.unpack('<f',bytes.fromhex(hex))[0]
+
+def hexToInt(hex):
+    return struct.unpack('<I',bytes.fromhex(hex))[0]

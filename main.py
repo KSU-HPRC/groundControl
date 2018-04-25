@@ -1,5 +1,14 @@
 from digi.xbee.devices import XBeeDevice
 from utility import getOpts, floatToHex,hexToFloat
+from rocket import Flight
 
-h='0x0123ABCD'
-print(hexToFloat(h))
+logFile=open("Launch1Log.TXT")
+
+lines=[]
+for line in logFile:
+    lines.append(line[:64])
+
+for line in lines:
+    #print(line)
+    snapShot=Flight(line)
+    print(snapShot)
